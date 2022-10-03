@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+/*  font-family: 'Satisfy', cursive;*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+/* font-family: 'Poppins', sans-serif; */
+
+*, * :before, * :after{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-family: 'Poppins', sans-serif;
+}
+
+ul, ol{
+  list-style: none;
+}
+
+body{
+  background-color: whitesmoke;
+  color: #222;
+}
+
+#main-header{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  background-color: white;
+  align-items: center;
+  justify-items: center;
+  padding: 0.5%;
+  border-bottom: 1px solid #ddd;
+}
+
+.search-bar {
+  display: flex;
+}
+
+.searchbar {
+  all: unset;
+  background-color: #ddd;
+}
+
+.nav-items {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-item {
+  padding: 5%;
+  margin-inline: 2%;
+}
+
+.navbar-item:hover {
+  background-color: #eee;
+}
+
+.nav-item-3 {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  justify-self: left;
+}
+
+.my-img {
+  border-radius: 50%;
+}
