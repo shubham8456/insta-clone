@@ -1,0 +1,84 @@
+body {
+    background-color: #fafafa;
+}
+
+.login-page {
+    width: 100vw;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    margin: 8vh 0;
+    padding-inline: 10vw;
+}
+
+.insta-login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30vw;
+    height: 100%;
+    background-color: white;
+    padding: 10%;
+    color: #999;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.heading {
+    margin: 22px auto 12px;
+    background-image: url("https://www.instagram.com/static/bundles/es6/sprite_core_b20f2a3cd7e4.png/b20f2a3cd7e4.png");
+    background-position: -98px 0;
+    height: 51px;
+    width: 177px;
+    overflow: hidden;
+}
+
+.field {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.field-text {
+    all: unset;
+    width: 100%;
+    height: 2rem;
+    color: black;
+    padding-inline: 10px;
+    background-color: #e6e6e6;
+}
+
+.login-button {
+    all: unset;
+    width: 10rem;
+    background-color: #3897f0;
+    color: #fff;
+    text-align: center;
+    padding: 0.5rem;
+    margin: 2rem 0;
+}
+
+.remember-me-text {
+    margin: 0.5rem 1rem;
+}
+
+.homepage-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+ul {
+    text-decoration: none;
+    display: flex;
+}
+
+li {
+    font-size: 12px;
+    text-align: center;
+    color: #999;
+    margin-inline: 0.4rem;
+}
+
+.more-width {
+    width: 10rem;
+    margin-inline: -2%;
+}

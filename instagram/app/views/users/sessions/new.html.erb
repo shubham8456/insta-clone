@@ -1,0 +1,65 @@
+<%= stylesheet_link_tag "sign-in" %>
+<p class="alert"><%= alert %></p>
+
+<section class="login-page">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="insta-login-form">
+    <div class="heading"></div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"field-text" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class:"field-text" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="field">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, class:"remember-me-text"%>
+      </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit "Log in", class:"login-button"%>
+    </div>
+<% end %>
+<%= render "devise/shared/links" %>
+  </div>
+<div class="welcome-image">
+  <%= image_tag "welcome-img.png" %>
+<div>
+</section>
+
+<div class="homepage-footer">
+    <ul>
+        <li>Meta</li>
+        <li>About</li>
+        <li>Blog</li>
+        <li>Jobs</li>
+        <li>Help</li>
+        <li>API</li>
+        <li>Privacy</li>
+        <li>Terms</li>
+        <li class="more-width">Top Accounts</li>
+        <li>Hashtags</li>
+        <li>Locations</li>
+        <li class="more-width">Instagram Lite</li>
+        <li class="more-width">Contact Uploading & Non-Users</li>
+    </ul>
+    <ul>
+        <li>Dance</li>
+        <li>Food & Drink</li>
+        <li class="more-width">Home & Garden</li>
+        <li>Music</li>
+        <li>Visual Arts</li>
+        <li>English</li>
+    </ul>
+    <ul>
+        <li>English</li>
+        <li class="more-width">© 2022 Instagram from Meta</li>
+    </ul>
+</div>
+</div>
