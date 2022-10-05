@@ -18,6 +18,7 @@ ul, ol{
 }
 
 body{
+  margin-top: -1rem;
   background-color: whitesmoke;
   color: #222;
 }
@@ -38,11 +39,14 @@ body{
 
 .search-bar {
   display: flex;
+  background-color: #ddd;
+  padding: 5px 20px;
+  border-radius: 5px;
 }
 
 .searchbar {
   all: unset;
-  background-color: #ddd;
+  margin-left: 10px;
 }
 
 .nav-items {

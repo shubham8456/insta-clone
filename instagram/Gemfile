@@ -9,6 +9,18 @@ gem "rails", "~> 7.0.4"
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.4', '>= 1.4.3'
 
+# to upload files in your Ruby applications, map them to a range of ORMs, store them on different backends.
+gem 'carrierwave', '~> 0.11.2'
+
+# cloud services library. Supports all major cloud providers like AWS services including EC2, S3, CloudWatch, SimpleDB, ELB, and RDS
+gem 'fog-aws', '~> 3.15'
+
+# to setup local ENV
+gem 'figaro', '~> 1.2'
+
+# Manipulate images with minimal use of memory via ImageMagick / GraphicsMagick
+gem 'mini_magick', '~> 4.11'
+
 # pundit for authorization stuff
 # gem 'pundit', '~> 2.2'
 
