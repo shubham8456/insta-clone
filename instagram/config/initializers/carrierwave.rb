@@ -1,13 +1,11 @@
-# CarrierWave.configure do |config|
-#     config.fog_credentials = {
-#         provider: 'AWS',
-#         aws_access_key_id: "AKIAU3OKE2CYILL6QSE2",
-#         aws_secret_access_key: "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"
-#     }
-#     config.storage = :fog
-#     config.permissions = 0666
-#     config.cache_dir = "#{Rails.root}/tmp/"
-#     config.fog_directory = "my-new-bucket-shubham123"
-#     config.fog_public = false
-#     config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" }     #optional
-# end
+CarrierWave.configure do |config|
+  config.storage    = :aws
+  config.aws_bucket = ENV.fetch('S3_BUCKET_NAME')
+  config.aws_acl    = 'public-read'
+  config.aws_authenticated_url_expiration = 60 * 60 * 24 * 7
+  config.aws_credentials = {
+    access_key_id: ENV.fetch('AWS_ACCESS_KEY_ID'),
+    secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY'),
+    region: ENV.fetch('AWS_REGION')
+  }
+end
