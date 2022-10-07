@@ -1,18 +1,19 @@
 class PostsController < ApplicationController
-    before_action :post_params, only: [:create]
+    #before_action :authenticate_user!
 
     def new
         @post = Post.new
     end
 
     def create
-        puts "\n\n\n ----------------- \n#{post_params["media"]}\n ---------------\n\n\\n"
         @post = Post.new(post_params)
+         
+        @post.user = current_user
 
         if @post.save
-            redirect_to homepage_path, flash: { success: "Post was created successfully!" }
+            redirect_to homepage_path
         else
-            redirect_to new_post_path, flash: { danger: "Post could not be saved." }
+            redirect_to new_post_path
         end
 
     end
@@ -23,7 +24,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:user).permit(:media)
+        params.require(:post).permit(:media, :caption)
     end
 
 end
