@@ -51,6 +51,7 @@ body{
 
 .nav-items {
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 

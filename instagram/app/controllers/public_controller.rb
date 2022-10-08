@@ -2,7 +2,7 @@ class PublicController < ApplicationController
     before_action :authenticate_user!
 
     def homepage
-        #user feed
+        @posts = Post.all
     end
     
     def show

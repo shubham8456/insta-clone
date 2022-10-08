@@ -1,4 +1,9 @@
-<h4>User Posts</h4>
+<h4>User Post</h4>
 
 
-<%= image_tag @Post.media.url %>
+<%= @posts.each do |p| %>
+    <% if p.user == current_user %>
+        <br /><br />
+        <%= image_tag p.media.url %><br /><br />
+    <% end %>
+<% end %>

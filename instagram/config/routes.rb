@@ -7,12 +7,14 @@ Rails.application.routes.draw do
   }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  resources :posts, only: [:new, :create, :show]
+
   # homepage for signed in users
   get 'homepage' => 'public#homepage'
 
-  resources :posts, only: [:new, :create, :show]
-
   get 'posts/new' => 'posts#new'
+
+  get 'posts/show' => 'posts#show', as: 'profile'
 
   # Defines the root path route ("/")
   devise_scope :user do

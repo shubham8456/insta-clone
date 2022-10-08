@@ -1,1 +1,13 @@
-<%= image_tag "homepage.png" %>
+<h3>User Posts</h3>
+
+<% p_counter = 1 %>
+<section class="posts-show">
+    <%= @posts.each do |p| %>
+        <br /><br />
+        <div>
+            <%= "Post #{p_counter}" %><br />
+            <%= image_tag p.media.url.to_s %><br /><br />
+        </div>
+        <% p_counter += 1 %>
+    <% end %>
+</section>
