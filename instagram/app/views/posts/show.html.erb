@@ -1,9 +1,45 @@
-<h4>User Post</h4>
+<h4><%= current_user.user_name %>'s posts</h4>
 
 
-<%= @posts.each do |p| %>
-    <% if p.user == current_user %>
-        <br /><br />
-        <%= image_tag p.media.url %><br /><br />
+
+<section class="user-posts-container">
+  <div class="posts-container">
+    <% @posts.each do |p| %>
+        
+        <% if p.user == current_user %>
+            <article>
+
+                <div class="post-card-header">
+                    <%= image_tag "1.png", height: 30, class:"my-img" %>
+                    <div class="post-card-header-text">
+                        <b><%= p.user.user_name %></b><br />
+                        <span class="post-card-header-location">Dehra Dun, India</span>
+                    </div>
+                </div>
+
+                <%= image_tag p.media.url, class:"post-card-image" %>
+
+                <span class="post-card-likes-count">20,441 likes</span>
+
+                <div>
+                    <b><%= p.user.user_name %></b>
+                    <span class="post-card-caption"><%= p.caption %></span>
+                </div>
+
+                <span class="post-card-comments-count">View all 14 comments</span>
+
+                <span class="post-card-time-duration"><%= "#{(time_ago_in_words p.created_at).to_s.upcase} AGO" %></span>
+
+                <span class="post-card-dividing-line"></span>
+
+                <div class="post-card-comment">
+                    <input type="text" id="post-card-comment-box" name="comment-box" placeholder="Add a comment...">
+                    <button type="button" class="post-button">Post</button>
+                </div>
+
+            </article>
+        <% end %>
+
     <% end %>
-<% end %>
+  </div>
+</section>

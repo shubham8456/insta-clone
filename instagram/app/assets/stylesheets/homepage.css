@@ -1,0 +1,80 @@
+.posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: white;
+    margin: 2%;
+    padding: 1%;
+    border: 1px solid #e6e6e6;
+}
+
+.post-card-header {
+    display: flex;
+    align-items: center;
+}
+
+.post-card-header-text {
+    margin-left: 10px;
+}
+
+.post-card-header-username {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.post-card-header-location {
+    font-size: 12px;
+}
+
+.post-card-image {
+    margin: 2% 0;
+}
+
+.post-card-likes-count {
+    font-weight: bold;
+}
+
+.post-card-caption {
+    margin-left: 10px;
+}
+
+.post-card-comments-count {
+    color: #999;
+}
+
+.post-card-time-duration {
+    font-size: 11px;
+    color: #999;
+    margin: 2% 0;
+}
+
+.post-card-dividing-line {
+    height: 1px;
+    width: 100%;
+    background-color: #dbdbdb;
+}
+
+.post-card-comment {
+    display: flex;
+    justify-content: space-between;
+    margin: 1% 0;
+}
+
+#post-card-comment-box {
+    all: unset;
+    width: 100%;
+    color: #999;
+    margin-inline: 1%;
+}
+
+.post-button {
+    all: unset;
+    float: right;
+    color: #30618A;
+    padding: 1% 2%;
+}

@@ -7,6 +7,5 @@ class PublicController < ApplicationController
     
     def show
         #user profile
-    end 
-    
+    end  
 end
