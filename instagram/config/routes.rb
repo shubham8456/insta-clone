@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   get 'posts/new' => 'posts#new'
 
-  get 'posts/show' => 'posts#show', as: 'profile'
+  get '/show/:id' => 'posts#show', as: 'profile'
 
   # Defines the root path route ("/")
   devise_scope :user do

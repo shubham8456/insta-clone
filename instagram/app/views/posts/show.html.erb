@@ -1,19 +1,19 @@
-<h4><%= current_user.user_name %>'s posts</h4>
-
-
-
 <section class="user-posts-container">
-  <div class="posts-container">
+  <div class="profile-posts-container">
     <% @posts.each do |p| %>
         
-        <% if p.user == current_user %>
+        <% if p.user == @user %>
             <article>
 
                 <div class="post-card-header">
-                    <%= image_tag "1.png", height: 30, class:"my-img" %>
+                    <% if p.user.profile_image.url %>
+                        <%= image_tag p.user.profile_image.url, height:30, class:"my-img" %>
+                    <% end %>
                     <div class="post-card-header-text">
                         <b><%= p.user.user_name %></b><br />
-                        <span class="post-card-header-location">Dehra Dun, India</span>
+                        <span class="post-card-header-location">
+                            <%= p.location %>
+                        </span>
                     </div>
                 </div>
 

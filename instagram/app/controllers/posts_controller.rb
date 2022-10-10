@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: [:update, :destroy]
     before_action :set_post, only: [:update, :destroy]
 
     def new
@@ -20,6 +20,7 @@ class PostsController < ApplicationController
     end
      
     def show
+        @user = User.find(params[:id])
         @posts = Post.all
     end
 
@@ -32,7 +33,7 @@ class PostsController < ApplicationController
     private
 
     def post_params
-        params.require(:post).permit(:media, :caption)
+        params.require(:post).permit(:media, :caption, :location)
     end
 
     def set_post

@@ -43,15 +43,17 @@
         </svg>
         </li>
         <li class="navbar-item">
-            <%= link_to image_tag("1.png", height: 35, class:"my-img"), profile_path  %>
+            <% if current_user.profile_image.url %>
+            <%= link_to image_tag(current_user.profile_image.url, height: 35, class:"my-img"), profile_path(current_user)  %>
+            <% end %>
         </li>
       </ul>
       <div class="navbar-buttons">
         <p class="navbar-button new-post-button">
-            <%= link_to "+", new_post_path, class:"btn btn-secondary" %>
+            <%= link_to "+", new_post_path, class:"btn btn-light" %>
         </p>
         <p class="navbar-button sign-out-nav-button">
-            <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class:"btn btn-secondary" %>
+            <%= link_to "Sign out", destroy_user_session_path, data: {turbo_method: :delete}, class:"btn btn-light" %>
         </p>
       </div>
     </div>

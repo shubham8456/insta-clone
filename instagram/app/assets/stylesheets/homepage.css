@@ -1,15 +1,37 @@
-.posts-container {
+.homepage-container {
+    display: grid;
+    grid-template-columns: 2fr 3.7fr 2.3fr 2fr;
+    margin: 4vh 0;
+}
+
+.homepage-posts-container {
+    width: 100%;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-posts-container {
+    width: 37%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-posts-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 article {
+    width: 95%;
     display: grid;
     grid-template-columns: 1fr;
     background-color: white;
     margin: 2%;
-    padding: 1%;
+    padding: 2%;
     border: 1px solid #e6e6e6;
 }
 
@@ -22,9 +44,10 @@ article {
     margin-left: 10px;
 }
 
-.post-card-header-username {
+.post-card-header-user_name {
+    all: unset;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .post-card-header-location {
@@ -33,6 +56,7 @@ article {
 
 .post-card-image {
     margin: 2% 0;
+    justify-self: center;
 }
 
 .post-card-likes-count {
@@ -77,4 +101,64 @@ article {
     float: right;
     color: #30618A;
     padding: 1% 2%;
+}
+
+.sidebar-container {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar {
+    width: 96%;
+    margin: 2%;
+    padding: 5%;
+    background-color: white;
+    border: 1px solid #e6e6e6;
+}
+
+.sidebar-logged-in-user {
+    display: flex;
+}
+
+.sidebar-logged-user-username-fullname {
+    margin-left: 1.6rem;
+}
+
+.sidebar-logged-user-username {
+    all: unset;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.sidebar-logged-user-full-name {
+    font-size: 14px;
+    color: #999;
+}
+
+.user-details {
+    all: unset;
+}
+
+.follow-button {
+    all: unset;
+    float: center;
+    color: #30618A;
+    padding: 1% 2%;
+}
+
+.suggestions-list {
+    margin: 40px 0;
+}
+
+.suggestions {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    margin: 4% 0;
+}
+
+.sidebar-footer-copyright-text {
+    font-size: 12px;
+    color: #999;
+    margin-left: 15%;
 }

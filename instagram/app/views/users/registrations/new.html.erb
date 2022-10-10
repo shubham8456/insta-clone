@@ -20,9 +20,16 @@
       </div>
     </div>
 
-    <div class="field">
-      <%= f.label :user_name %><br />
-      <%= f.text_field :user_name, autofocus: true, class:"field-text" %>
+    <div class="two-column-field">
+      <div class="field">
+        <%= f.label :user_name %><br />
+        <%= f.text_field :user_name, autofocus: true, class:"field-text" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :profile_image %><br />
+        <%= f.file_field :profile_image, autofocus: true, class:"field-image" %>
+      </div>
     </div>
 
     <div class="two-column-field">

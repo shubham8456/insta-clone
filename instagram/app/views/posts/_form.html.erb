@@ -1,8 +1,13 @@
 <%= form_for @post do |f| %>
+
     <%= f.file_field :media %><br /><br />
 
     <%= f.label :caption %><br />
-    <%= f.text_field :caption %>
+    <%= f.text_field :caption %><br /><br />
+
+    <%= f.label :location %><br />
+    <%= f.text_field :location %><br /><br />
     
     <%= f.submit "Save Post", class:"btn btn-primary" %>
+
 <% end %> 

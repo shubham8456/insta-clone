@@ -33,6 +33,10 @@
     background-color: #e6e6e6;
 }
 
+.field-image {
+    width: 100%;
+}
+
 .bio-field-text {
     height: 4rem;
     width: 93%;

@@ -3,6 +3,7 @@ class PublicController < ApplicationController
 
     def homepage
         @posts = Post.all
+        @users = User.all
     end
     
     def show
