@@ -20,8 +20,9 @@ class PostsController < ApplicationController
     end
      
     def show
-        @user = User.find(params[:id])
-        @posts = Post.all
+        @user = User.find_by_user_name(params[:user_name])
+        @posts = Post.all.order(created_at: :desc)
+        @comment = Comment.new
     end
 
     def update

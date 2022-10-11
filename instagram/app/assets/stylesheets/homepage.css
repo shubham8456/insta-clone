@@ -45,7 +45,7 @@ article {
 }
 
 .post-card-header-user_name {
-    all: unset;
+    text-decoration: none;
     font-weight: bold;
     font-size: 16px;
 }
@@ -55,6 +55,8 @@ article {
 }
 
 .post-card-image {
+    width: 33vw;
+    object-fit: contain;
     margin: 2% 0;
     justify-self: center;
 }
@@ -67,14 +69,18 @@ article {
     margin-left: 10px;
 }
 
-.post-card-comments-count {
-    color: #999;
-}
-
 .post-card-time-duration {
     font-size: 11px;
     color: #999;
     margin: 2% 0;
+}
+
+.existing-comment {
+    display: inline;
+}
+
+.existing-comment-content {
+    font-size: 14px;
 }
 
 .post-card-dividing-line {
@@ -84,15 +90,18 @@ article {
 }
 
 .post-card-comment {
-    display: flex;
-    justify-content: space-between;
-    margin: 1% 0;
+    display: inline;
+    margin: 1% 0%;
 }
 
-#post-card-comment-box {
-    all: unset;
-    width: 100%;
+.comment-time-ago {
+    font-size: 10px;
     color: #999;
+}
+
+.post-card-comment-box {
+    width: 90%;
+    all: unset;
     margin-inline: 1%;
 }
 

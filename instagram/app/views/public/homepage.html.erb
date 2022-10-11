@@ -9,12 +9,12 @@
 
             <div class="post-card-header">
                 
-                <%= link_to profile_path(p.user) do %>
+                <%= link_to profile_path(p.user.user_name) do %>
                     <% if p.user.profile_image.url %>
                         <%= image_tag p.user.profile_image.url, height:35, class:"my-img" %>
                     <% end %>
                 <div class="post-card-header-text">
-                    <a class="post-card-header-user_name"><%= p.user.user_name %></a><br />
+                    <div class="post-card-header-user_name"><%= p.user.user_name %></div>
                 <% end %>
                     <span class="post-card-header-location">
                         <%= p.location %>
@@ -27,19 +27,24 @@
             <span class="post-card-likes-count">20,441 likes</span>
 
             <div>
-                <b><%= p.user.user_name %></b>
+                <%= link_to profile_path(p.user.user_name) do %>
+                    <b><%= p.user.user_name %></b>
+                <% end %>
                 <span class="post-card-caption"><%= p.caption %></span>
             </div>
 
-            <span class="post-card-comments-count">View all 14 comments</span>
-
             <span class="post-card-time-duration"><%= "#{(time_ago_in_words p.created_at).to_s.upcase} AGO" %></span>
+
+            <%= render "posts/comments", post: p %>
 
             <span class="post-card-dividing-line"></span>
 
             <div class="post-card-comment">
-                <input type="text" id="post-card-comment-box" name="comment-box" placeholder="Add a comment...">
-                <button type="button" class="post-button">Post</button>
+                <%= form_for @comment do |f| %>
+                    <%= f.hidden_field :post_id, value: p.id %>
+                    <%= f.text_field :comment_text, class:"post-card-comment-box", placeholder:"Add a comment..." %>
+                    <%= f.submit "Post", class:"post-button" %>
+                <% end %>
             </div>
 
         </article>
@@ -52,14 +57,14 @@
     <div class="sidebar">
         
         <div class="sidebar-logged-in-user">
-            <%= link_to profile_path(current_user) do %>
+            <%= link_to profile_path(current_user.user_name) do %>
                 <% if current_user.profile_image.url %>
                     <%= image_tag current_user.profile_image.url, height:50, class:"my-img" %>
                 <% end %>
                 <div class="sidebar-logged-user-username-fullname">
-                    <a class="sidebar-logged-user-username">
+                    <p class="sidebar-logged-user-username">
                         <%= current_user.user_name %>
-                    </a>
+                    </p>
             <% end %>
                     <br>
                     <span class="sidebar-logged-user-full-name"><%= "#{current_user.first_name} #{current_user.last_name}" %></span>
@@ -72,13 +77,13 @@
                 <div class="suggestions">
                 <% if user != current_user %>
                     <div class="user-details">
-                        <%= link_to profile_path(user) do %>
+                        <%= link_to profile_path(user.user_name) do %>
                             <% if user.profile_image.url %>
                                 <%= image_tag user.profile_image.url, height:35, class:"my-img" %>
                             <% end %>
-                            <a class="sidebar-logged-user-username">
+                            <p class="sidebar-logged-user-username">
                                 <%= user.user_name %>
-                            </a>
+                            </p>
                         <% end %>
                     </div>
                     <button type="button" class="follow-button">Follow</button>

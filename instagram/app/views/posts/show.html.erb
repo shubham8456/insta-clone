@@ -26,15 +26,18 @@
                     <span class="post-card-caption"><%= p.caption %></span>
                 </div>
 
-                <span class="post-card-comments-count">View all 14 comments</span>
-
                 <span class="post-card-time-duration"><%= "#{(time_ago_in_words p.created_at).to_s.upcase} AGO" %></span>
+
+                <%= render "posts/comments", post: p %>
 
                 <span class="post-card-dividing-line"></span>
 
                 <div class="post-card-comment">
-                    <input type="text" id="post-card-comment-box" name="comment-box" placeholder="Add a comment...">
-                    <button type="button" class="post-button">Post</button>
+                    <%= form_for @comment do |f| %>
+                        <%= f.hidden_field :post_id, value: p.id %>
+                        <%= f.text_field :comment_text, class:"post-card-comment-box", placeholder:"Add a comment..." %>
+                        <%= f.submit "Post", class:"post-button" %>
+                    <% end %>
                 </div>
 
             </article>

@@ -1,0 +1,17 @@
+<% post.comments.each do |comment| %>
+
+<div class="existing-comment-container">
+    <div class="existing-comment">
+        <%= link_to profile_path(comment.user.user_name) do %>
+            <strong><%= comment.user.user_name %></strong>
+        <% end %>
+        <span class="existing-comment-content">
+            <%= comment.comment_text %>
+        </span>
+    </div>
+    <div class="comment-time-ago">
+        <%= time_ago_in_words comment.created_at %>
+    </div>
+</div>
+
+<% end %>

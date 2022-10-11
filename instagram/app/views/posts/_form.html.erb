@@ -1,13 +1,21 @@
+<div class="new-post-page-container">
 <%= form_for @post do |f| %>
+    <div class="new-post-container">
+        <div class="new-post-item">
+            <%= f.file_field :media %>
+        </div>
 
-    <%= f.file_field :media %><br /><br />
+        <div class="new-post-item">
+            <%= f.label :caption %><br />
+            <%= f.text_field :caption, class:"new-post-text-fields" %>
+        <div class="new-post-item">
 
-    <%= f.label :caption %><br />
-    <%= f.text_field :caption %><br /><br />
-
-    <%= f.label :location %><br />
-    <%= f.text_field :location %><br /><br />
-    
-    <%= f.submit "Save Post", class:"btn btn-primary" %>
-
+        <div class="new-post-item">
+            <%= f.label :location %><br />
+            <%= f.text_field :location, class:"new-post-text-fields" %>
+        </div>
+        
+        <%= f.submit "Save Post", class:"btn btn-dark" %>
+    </div>
 <% end %> 
+</div>
