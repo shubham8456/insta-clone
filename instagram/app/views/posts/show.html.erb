@@ -1,29 +1,49 @@
 <section class="user-posts-container">
+
+  <div class="profile-page-header">
+    <%= image_tag @user.profile_image.url, class:"profile-image" %>
+
+    <div class="profile-details">
+
+        <div class="header-username">
+            <%= @user.user_name %>
+        </div>
+
+        <div class="header-profile-stats">
+            <span class="header-profile-stat"><%= pluralize @post_count, "post" %></span>
+            <span class="header-profile-stat"><b>0</b> followers</span>
+            <span class="header-profile-stat"><b>0</b> following</span>
+        </div>
+
+        <div class="header-user-fullname">
+            <%= "#{@user.first_name} #{@user.last_name}" %>
+        </div>
+
+        <div class="header-user-bio">
+            <%= @user.bio %>
+        </div>
+    </div>
+  </div>
+
+  <div class="profile-page-separator-line"></div>
+
+  <span><b>POSTS</b></span>
+
   <div class="profile-posts-container">
+
     <% @posts.each do |p| %>
         
         <% if p.user == @user %>
             <article>
 
-                <div class="post-card-header">
-                    <% if p.user.profile_image.url %>
-                        <%= image_tag p.user.profile_image.url, height:30, class:"my-img" %>
-                    <% end %>
-                    <div class="post-card-header-text">
-                        <b><%= p.user.user_name %></b><br />
-                        <span class="post-card-header-location">
-                            <%= p.location %>
-                        </span>
-                    </div>
-                </div>
-
                 <%= image_tag p.media.url, class:"post-card-image" %>
 
-                <span class="post-card-likes-count">20,441 likes</span>
+                <span class="post-card-header-location">
+                            <%= p.location %>
+                </span>
 
                 <div>
-                    <b><%= p.user.user_name %></b>
-                    <span class="post-card-caption"><%= p.caption %></span>
+                    <span class="post-card-caption profile-page-post-card-caption"><%= p.caption %></span>
                 </div>
 
                 <span class="post-card-time-duration"><%= "#{(time_ago_in_words p.created_at).to_s.upcase} AGO" %></span>

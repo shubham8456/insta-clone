@@ -1,0 +1,59 @@
+.user-posts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-page-header {
+    display: flex;
+    margin: 5rem;
+    align-items: center;
+}
+
+.profile-image {
+    width: 160px;
+    border-radius: 50%;
+    border: 1px solid #e6e6e6;
+}
+
+.profile-details {
+    margin-left: 3rem;
+}
+
+.header-username {
+    font-size: 26px;
+}
+
+.header-profile-stats {
+    margin-top: 20px;
+}
+
+.header-profile-stat {
+    margin-right: 20px;
+}
+
+.header-user-fullname {
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.profile-page-separator-line {
+    height: 2px;
+    width: 80%;
+    background-color: #dbdbdb;
+    margin-bottom: 20px;
+}
+
+.profile-posts-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 70%;
+    margin-top: 20px;
+}
+
+.profile-page-post-card-caption {
+    margin-left: 0;
+    font-size: 12px;
+    font-weight: bold;
+}

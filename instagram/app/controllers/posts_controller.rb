@@ -23,6 +23,7 @@ class PostsController < ApplicationController
         @user = User.find_by_user_name(params[:user_name])
         @posts = Post.all.order(created_at: :desc)
         @comment = Comment.new
+        @post_count = @user.posts.count
     end
 
     def update
