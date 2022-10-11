@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ @media only screen and (max-width: 480px) {
+    .sidebar { display: none; }
+    .sidebar-footer { display: none; }
+    article { width: 100vw; margin: 0; }
+    .search-bar { display: none; }
+    .nav-items { display: none;}
+}
