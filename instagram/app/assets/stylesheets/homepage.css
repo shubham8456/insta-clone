@@ -81,6 +81,14 @@ article {
     margin: 1% 0%;
 }
 
+.comment-delete {
+    all: unset;
+    font-size: 14px;
+    color: red;
+    float: right;
+    padding: 1% 2%;
+}
+
 .comment-time-ago {
     font-size: 10px;
     color: #999;

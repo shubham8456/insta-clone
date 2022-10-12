@@ -1,4 +1,4 @@
-<% post.comments.where(parent_id: nil).each do |comment| %>
+<% post.comments.where(parent_id: nil).order(created_at: :desc).each do |comment| %>
 
 <div class="existing-comment-container">
 
@@ -9,6 +9,11 @@
         <span class="existing-comment-content">
             <%= comment.comment_text %>
         </span>
+        <span class="existing-comment-delete-button">
+        </span>
+        <% if comment.user == current_user %>
+            <%= link_to "Delete", comment_path(comment), data: {turbo_method: :delete}, class:"comment-delete" %>
+        <% end %>
     </div>
     <br />
     <span class="comment-time-ago">
@@ -21,8 +26,8 @@
         <%= form_for Comment.new do |f| %>
             <%= f.hidden_field :post_id, value: post.id %>
             <%= f.hidden_field :parent_id, value: comment.id %>
-            <%= f.text_field :comment_text, class:"post-card-comment-box", placeholder:"Add a comment..." %>
-            <%= f.submit "Post", class:"post-button" %>
+            <%= f.text_field :comment_text, class:"sub-comment-text-box", placeholder:"Add a comment..." %>
+            <%= f.submit "Post", class:"sub-commment-post-button" %>
         <% end %>
     </div>
 
@@ -31,7 +36,11 @@
             <%= link_to profile_path(cmmnt.user.user_name) do %>
                 <%= cmmnt.user.user_name %>
             <% end %>
-            <%= cmmnt.comment_text %><br />
+            <%= cmmnt.comment_text %>
+            <% if cmmnt.user == current_user %>
+                <%= link_to "Delete", comment_path(cmmnt), data: {turbo_method: :delete}, class:"sub-comment-delete" %>
+            <% end %>
+            <br />
             <span class="sub-comments-time-ago">
                 <%= time_ago_in_words cmmnt.created_at %>
             </span>

@@ -7,5 +7,5 @@ class Comment < ApplicationRecord
     validates_presence_of :comment_text
 
     belongs_to :parent, class_name: :comment, optional: true
-    has_many :comments, foreign_key: :parent_id
+    has_many :comments, foreign_key: :parent_id, dependent: :destroy
 end

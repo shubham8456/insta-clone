@@ -2,5 +2,5 @@ class Post < ApplicationRecord
     mount_uploader :media, MediaUploader
 
     belongs_to :user
-    has_many :comments
+    has_many :comments, dependent: :destroy
 end
