@@ -1,6 +1,7 @@
-<% post.comments.each do |comment| %>
+<% post.comments.where(parent_id: nil).each do |comment| %>
 
 <div class="existing-comment-container">
+
     <div class="existing-comment">
         <%= link_to profile_path(comment.user.user_name) do %>
             <strong><%= comment.user.user_name %></strong>
@@ -9,9 +10,43 @@
             <%= comment.comment_text %>
         </span>
     </div>
-    <div class="comment-time-ago">
+    <br />
+    <span class="comment-time-ago">
         <%= time_ago_in_words comment.created_at %>
+    </span>
+
+    <a href="#" class="sub-comment-form-display-button">Reply</a>
+
+    <div class="sub-comment-form">
+        <%= form_for Comment.new do |f| %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.hidden_field :parent_id, value: comment.id %>
+            <%= f.text_field :comment_text, class:"post-card-comment-box", placeholder:"Add a comment..." %>
+            <%= f.submit "Post", class:"post-button" %>
+        <% end %>
     </div>
+
+    <% comment.comments.order(created_at: :desc).each do |cmmnt| %>
+        <div class="sub-comments">
+            <%= link_to profile_path(cmmnt.user.user_name) do %>
+                <%= cmmnt.user.user_name %>
+            <% end %>
+            <%= cmmnt.comment_text %><br />
+            <span class="sub-comments-time-ago">
+                <%= time_ago_in_words cmmnt.created_at %>
+            </span>
+        </div>
+    <% end %>
 </div>
 
-<% end %>
+<% end %> 
+
+<script>
+    replyTags = document.querySelectorAll(".sub-comment-form-display-button");  // to get all 'Reply' action tags
+    replyTags.forEach( (replyTag) => {
+        replyTag.addEventListener('click', (showSubcommentForm) => {
+            showSubcommentForm.preventDefault();
+            replyTag.nextElementSibling.style = "display: block;";
+        })
+    })
+</script>

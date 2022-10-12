@@ -3,7 +3,7 @@ class PublicController < ApplicationController
 
     def homepage
         @posts = Post.all.order(created_at: :desc)
-        @users = User.all
+        @users = User.all.order(created_at: :desc)
         @comment = Comment.new
     end
     

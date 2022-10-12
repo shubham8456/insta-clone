@@ -73,6 +73,7 @@
 
         <div class="suggestions-list">
             <p>Suggestions for you</p>
+            <% suggestions_count = 0 %>
             <% @users.each do |user| %>
                 <div class="suggestions">
                 <% if user != current_user %>
@@ -89,6 +90,12 @@
                     <button type="button" class="follow-button">Follow</button>
                 <% end %>
                 </div>
+                <% if suggestions_count < 5 %>
+                    <% suggestions_count +=1 %>
+                <% else %>
+                    <% break %>
+                <% end %>
+                
             <% end %>
     
         </div>
