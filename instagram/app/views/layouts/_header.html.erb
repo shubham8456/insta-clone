@@ -41,7 +41,9 @@
         </li>
         <li class="navbar-item">
             <% if current_user.profile_image.url %>
-            <%= link_to image_tag(current_user.profile_image.url, height: 35, class:"my-img"), profile_path(current_user.user_name)  %>
+                <%= link_to image_tag(current_user.profile_image.url, height: 35, class:"my-img"), profile_path(current_user.user_name)  %>
+            <% else %>
+                <%= link_to image_tag('default_profile_photo.png', height: 35, class:"my-img") %>
             <% end %>
         </li>
       </ul>

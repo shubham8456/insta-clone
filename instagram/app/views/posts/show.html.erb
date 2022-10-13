@@ -1,13 +1,21 @@
 <section class="user-posts-container">
 
   <div class="profile-page-header">
-    <%= image_tag @user.profile_image.url, class:"profile-image" %>
+    <% if @user.profile_image.url %>
+        <%= image_tag @user.profile_image.url, class:"profile-image" %>
+    <% else %>
+        <%= image_tag 'default_profile_photo.png', class:"profile-image" %>
+    <% end %>
 
     <div class="profile-details">
 
         <div class="header-username">
             <%= @user.user_name %>
         </div>
+        <br />
+        <% if @user == current_user %>
+            <%= link_to 'Edit Profile', edit_user_registration_path, data: { turbo_method: :get }, class:"btn btn-dark" %>
+        <% end %>
 
         <div class="header-profile-stats">
             <span class="header-profile-stat"><%= pluralize @post_count, "post" %></span>
@@ -41,6 +49,10 @@
                 <span class="post-card-header-location">
                             <%= p.location %>
                 </span>
+
+                <% if p.user == current_user %>
+                    <%= link_to "Delete", destroy_post_path(p), data: {turbo_method: :delete}, class:"comment-delete post-delete" %>
+                <% end %>
 
                 <div>
                     <span class="post-card-caption profile-page-post-card-caption"><%= p.caption %></span>

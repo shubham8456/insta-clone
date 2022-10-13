@@ -41,6 +41,10 @@ article {
     font-size: 12px;
 }
 
+.post-delete {
+    float: right;
+}
+
 .post-card-image {
     width: 100%;
     object-fit: contain;

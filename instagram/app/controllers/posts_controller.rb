@@ -30,6 +30,9 @@ class PostsController < ApplicationController
     end
 
     def destroy
+        if @post.user == current_user
+            @post.destroy
+        end
     end
 
     private

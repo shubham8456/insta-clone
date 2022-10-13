@@ -5,7 +5,7 @@
   <div class="posts-container">
     <% @posts.each do |p| %>
 
-        <% if p.user.followers.include? current_user  %>
+        <% if p.user.followers.include? current_user %>
         
         <article>
 
@@ -14,7 +14,10 @@
                 <%= link_to profile_path(p.user.user_name) do %>
                     <% if p.user.profile_image.url %>
                         <%= image_tag p.user.profile_image.url, height:35, class:"my-img" %>
+                    <% else %>
+                        <%= link_to image_tag('default_profile_photo.png', height: 35, class:"my-img") %>
                     <% end %>
+                    
                 <div class="post-card-header-text">
                     <div class="post-card-header-user_name"><%= p.user.user_name %></div>
                 <% end %>
@@ -22,6 +25,7 @@
                         <%= p.location %>
                     </span>
                 </div>
+
             </div>
             
             <%# the post photo itself %>
@@ -74,6 +78,8 @@
             <%= link_to profile_path(current_user.user_name) do %>
                 <% if current_user.profile_image.url %>
                     <%= image_tag current_user.profile_image.url, height:50, class:"my-img" %>
+                <% else %>
+                    <%= link_to image_tag('default_profile_photo.png', height: 50, class:"my-img") %>
                 <% end %>
                 <div class="sidebar-logged-user-username-fullname">
                     <p class="sidebar-logged-user-username">
@@ -87,7 +93,7 @@
 
         <div class="suggestions-list">
             <p>Suggestions for you</p>
-            <% suggestions_count = 0 %>
+            <%# suggestions_count = 0 %>
             <% @users.each do |user| %>
                 <div class="suggestions">
                 <% if user != current_user %>
@@ -95,6 +101,8 @@
                         <%= link_to profile_path(user.user_name) do %>
                             <% if user.profile_image.url %>
                                 <%= image_tag user.profile_image.url, height:35, class:"my-img" %>
+                            <% else %>
+                                <%= link_to image_tag('default_profile_photo.png', height: 35, class:"my-img") %>
                             <% end %>
                             <p class="sidebar-logged-user-username">
                                 <%= user.user_name %>
@@ -110,16 +118,15 @@
                         <%= button_to 'Follow', user_follows_path(user), method: :post, class:"btn btn-light btn-sm follow-unfollow-button" %>
                     <% end %>
 
-                    <%# <button type="button" class="follow-button">Follow</button> %>
                 <% end %>
                 </div>
 
                 <%# to display only recent 5 users %>
-                <% if suggestions_count < 4 %>
-                    <% suggestions_count += 1 %>
-                <% else %>
-                    <% break %>
-                <% end %>
+                <%# if suggestions_count < 4 %>
+                    <%# suggestions_count += 1 %>
+                <%# else %>
+                    <%# break %>
+                <%# end %>
                 
             <% end %>
     
