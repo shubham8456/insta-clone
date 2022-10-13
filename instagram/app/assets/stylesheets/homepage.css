@@ -154,13 +154,6 @@ article {
     all: unset;
 }
 
-.follow-button {
-    all: unset;
-    float: center;
-    color: #30618A;
-    padding: 1% 2%;
-}
-
 .suggestions-list {
     margin: 40px 0;
 }

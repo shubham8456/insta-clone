@@ -4,6 +4,8 @@
 
   <div class="posts-container">
     <% @posts.each do |p| %>
+
+        <% if p.user.followers.include? current_user  %>
         
         <article>
 
@@ -59,6 +61,8 @@
 
         </article>
 
+        <% end %>
+
     <% end %>
   </div>
 
@@ -97,14 +101,16 @@
                             </p>
                         <% end %>
                     </div>
-                    <%# is_followed = p.likes.find { |like| like.user_id == current_user.id} %>
+                    
+                    <% is_followed = user.followers.find { |follower| follower.id == current_user.id} %>
 
-                    <%# if is_liked %>
-                        <%#= button_to 'Unfollow', post_like_path(p, is_liked), data: { turbo_method: :delete } %>
-                    <%# else %>
-                        <%#= button_to 'Follow', post_likes_path(p), data: { turbo_method: :post } %>
-                    <%# end %>
-                    <button type="button" class="follow-button">Follow</button>
+                    <% if is_followed %>
+                        <%= button_to 'Unfollow', user_follow_path(user, current_user), method: :delete, class:"btn btn-light btn-sm follow-unfollow-button" %>
+                    <% else %>
+                        <%= button_to 'Follow', user_follows_path(user), method: :post, class:"btn btn-light btn-sm follow-unfollow-button" %>
+                    <% end %>
+
+                    <%# <button type="button" class="follow-button">Follow</button> %>
                 <% end %>
                 </div>
 
