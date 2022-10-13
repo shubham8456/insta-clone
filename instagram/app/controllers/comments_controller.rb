@@ -14,8 +14,8 @@ class CommentsController < ApplicationController
 
     def destroy
         @comment = Comment.find_by_id(params[:id])
-        @comment.destroy
-        redirect_back fallback_location: homepage_path
+        @comment.destroy if @comment.user == current_user
+        redirect_to homepage_path
     end
 
     private

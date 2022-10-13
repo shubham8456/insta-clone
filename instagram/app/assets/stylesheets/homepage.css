@@ -52,6 +52,16 @@ article {
     font-weight: bold;
 }
 
+.post-card-like-button-inactive {
+    /* height: 20px; */
+    background-color: white;
+}
+
+.post-card-like-button-active {
+    /* height: 20px; */
+    background-color: red;
+}
+
 .post-card-caption {
     margin-left: 10px;
 }

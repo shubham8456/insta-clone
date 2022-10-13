@@ -11,8 +11,8 @@
 
         <div class="header-profile-stats">
             <span class="header-profile-stat"><%= pluralize @post_count, "post" %></span>
-            <span class="header-profile-stat"><b>0</b> followers</span>
-            <span class="header-profile-stat"><b>0</b> following</span>
+            <span class="header-profile-stat"><b><%= @user.followers.count %></b> followers</span>
+            <span class="header-profile-stat"><b><%= @user.followings.count %></b> following</span>
         </div>
 
         <div class="header-user-fullname">

@@ -21,10 +21,20 @@
                     </span>
                 </div>
             </div>
+            
+            <%# the post photo itself %>
+            <%= image_tag p.media.url, class:"post-card-image"  %>
 
-            <%= image_tag p.media.url, class:"post-card-image" %>
 
-            <span class="post-card-likes-count">20,441 likes</span>
+            <% is_liked = p.likes.find { |like| like.user_id == current_user.id} %>
+            
+            <% if is_liked %>
+                <%= link_to image_tag("insta-like-button.png", height: 20, class:"post-card-like-button-active"), post_like_path(p, is_liked), data: { turbo_method: :delete } %>
+            <% else %>
+                <%= link_to image_tag("insta-like-button.png", height: 20, class:"post-card-like-button-inactive"), post_likes_path(p), data: { turbo_method: :post } %>
+            <% end %>
+
+            <span class="post-card-likes-count"><%= pluralize p.likes.count, "like" %></span>
 
             <div>
                 <%= link_to profile_path(p.user.user_name) do %>
@@ -87,11 +97,20 @@
                             </p>
                         <% end %>
                     </div>
+                    <%# is_followed = p.likes.find { |like| like.user_id == current_user.id} %>
+
+                    <%# if is_liked %>
+                        <%#= button_to 'Unfollow', post_like_path(p, is_liked), data: { turbo_method: :delete } %>
+                    <%# else %>
+                        <%#= button_to 'Follow', post_likes_path(p), data: { turbo_method: :post } %>
+                    <%# end %>
                     <button type="button" class="follow-button">Follow</button>
                 <% end %>
                 </div>
-                <% if suggestions_count < 5 %>
-                    <% suggestions_count +=1 %>
+
+                <%# to display only recent 5 users %>
+                <% if suggestions_count < 4 %>
+                    <% suggestions_count += 1 %>
                 <% else %>
                     <% break %>
                 <% end %>

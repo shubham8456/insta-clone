@@ -10,7 +10,15 @@ Rails.application.routes.draw do
   resources :posts, only: [:new, :create, :show, :destroy]
 
   resources :comments, only: [:create, :destroy]
+
+  resources :posts do
+    resources :likes, only: [:create, :destroy]
+  end
   
+  resources :users do
+    resources :follows, only: [:create, :destroy]
+  end
+
   # homepage for signed in users
   get 'homepage' => 'public#homepage'
 
