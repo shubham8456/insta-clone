@@ -26,6 +26,8 @@ Rails.application.routes.draw do
 
   get 'show/:user_name' => 'posts#show', as: 'profile'
 
+  get 'show/:user_name/followings' => 'follows#show', as: 'user-followings'
+
   # Defines the root path route ("/")
   devise_scope :user do
     root 'users/sessions#new'

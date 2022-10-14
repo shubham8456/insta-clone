@@ -15,6 +15,14 @@
         <br />
         <% if @user == current_user %>
             <%= link_to 'Edit Profile', edit_user_registration_path, data: { turbo_method: :get }, class:"btn btn-dark" %>
+        <% else %>
+            <% is_followed = @user.followers.find { |follower| follower.id == current_user.id} %>
+            
+            <% if is_followed %>
+                <%= button_to 'Unfollow', user_follow_path(@user, current_user), method: :delete, class:"btn btn-dark follow-unfollow-button" %>
+            <% else %>
+                <%= button_to 'Follow', user_follows_path(@user), method: :post, class:"btn btn-dark follow-unfollow-button" %>
+            <% end %>
         <% end %>
 
         <div class="header-profile-stats">
@@ -23,6 +31,9 @@
             <span class="header-profile-stat"><b><%= @user.followings.count %></b> following</span>
         </div>
 
+        <br />
+        <%= link_to 'Followings', user_followings_path(@user.user_name), data: { turbo_method: :get }, class:"btn btn-dark" %>
+        
         <div class="header-user-fullname">
             <%= "#{@user.first_name} #{@user.last_name}" %>
         </div>
@@ -51,7 +62,7 @@
                 </span>
 
                 <% if p.user == current_user %>
-                    <%= link_to "Delete", destroy_post_path(p), data: {turbo_method: :delete}, class:"comment-delete post-delete" %>
+                    <%= link_to "Delete Post", destroy_post_path(p), data: {turbo_method: :delete}, class:"comment-delete post-delete" %>
                 <% end %>
 
                 <div>

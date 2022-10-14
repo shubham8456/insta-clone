@@ -5,6 +5,7 @@
     <div class="instagram-logo">
         <%= link_to image_tag("instagram-text-icon.png", height: 30, class:"instagram-text-icon"), homepage_path  %>
     </div>
+
     <div class="search-bar">
         <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="search-icon-container" viewBox="0 0 16 16">
@@ -13,12 +14,15 @@
         </div>
         <input class="searchbar" type="text" class="searchbar-input" placeholder="Search...">
     </div>
+
     <div class="nav-item-3">
       <ul class="nav-items">
         <li class="navbar-item">
+        <%= link_to homepage_path do %>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
             <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
         </svg>
+        <% end %>
         </li>
         <li class="navbar-item">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">

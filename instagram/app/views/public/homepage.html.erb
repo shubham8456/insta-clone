@@ -6,6 +6,8 @@
     <% @posts.each do |p| %>
 
         <% if p.user.followers.include? current_user %>
+        <%# or we can also use this %>
+        <%# if current_user.followings.include? p.user %>
         
         <article>
 
@@ -104,10 +106,9 @@
                             <% else %>
                                 <%= link_to image_tag('default_profile_photo.png', height: 35, class:"my-img") %>
                             <% end %>
-                            <p class="sidebar-logged-user-username">
-                                <%= user.user_name %>
-                            </p>
                         <% end %>
+
+                        <%= link_to user.user_name, profile_path(user.user_name), class:"sidebar-logged-user-username" %>
                     </div>
                     
                     <% is_followed = user.followers.find { |follower| follower.id == current_user.id} %>

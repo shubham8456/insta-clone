@@ -1,7 +1,11 @@
 class FollowsController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :destroy]
+    before_action :authenticate_user!, only: [:create, :destroy, :show]
     before_action :find_user
     before_action :already_followed, only: [:destroy]
+
+    def show
+        @follows = Follow.all
+    end
 
     def create
         if !already_followed && @user != current_user
@@ -23,7 +27,11 @@ class FollowsController < ApplicationController
     private
 
     def find_user
-        @user = Post.find(params[:user_id])
+        if params[:user_id]
+            @user = User.find(params[:user_id])    
+        else
+            @user = User.find_by_user_name(params[:user_name])
+       end
     end
 
     def already_followed

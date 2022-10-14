@@ -1,0 +1,50 @@
+<% followers_list = [] %>
+<% followed_users_list = [] %>
+
+<% @follows.each do |follow| %>
+    <% if follow.follower_id == @user.id %>
+        <% followed_user = User.find_by_id(follow.followed_user_id).user_name %>
+        <% if !followed_users_list.include? (followed_user) %>
+            <% followed_users_list.append(followed_user) %>
+        <% end %>
+    <% elsif follow.followed_user_id == @user.id %>
+        <% follower = User.find_by_id(follow.follower_id).user_name %>
+        <% followers_list.append(follower) %>
+    <% end %>
+<% end %>
+
+<section class="followings-page-container">
+    <div class="followings-page-data-display-container">
+
+        <div class="display-box">
+            <span class="follower_followed_user_heading"><%= @user.user_name %> is following:</span>
+            <br /><br>
+            <% followed_user_count = 1 %>
+
+            <% followed_users_list.each do |followed_user| %>
+
+                <span><%= followed_user_count %>. </span>
+                <span><%= link_to followed_user, profile_path(followed_user) %></span>
+
+                <% followed_user_count += 1 %>
+                <br />
+            <% end %>
+        </div>
+
+        <div class="display-box">
+            <span class="follower_followed_user_heading"><%= @user.user_name %> is being followed by:</span>
+            <br /><br />
+            <% follower_count = 1 %>
+
+            <% followers_list.each do |follower| %>
+
+                <span><%= follower_count %>. </span>
+                <span><%= link_to follower, profile_path(follower) %></span>
+
+                <% follower_count += 1 %>
+                <br />
+            <% end %>
+        </div>
+
+    </div>
+<section>
