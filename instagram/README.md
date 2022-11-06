@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## This is an instagram clone webapp made by [Shubham Rawat](https://github.com/shubham8456).
 
-Things you may want to cover:
+* Users can sign up and log in to their account to create image and video posts, follow other people.
+* They can also make comments on other users' posts and comments; and also give the posts, likes.
+* They also have been given ability to delete their own posts and comments.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### System Requirements and Dependencies:
+* Ruby version: ruby "3.0.0"
+* Rails version: "7.0.4"
+* PostgreSql
+* devise
+* carrierwave
+* carrierwave-aws
+* figaro
+* minimagick
+* kaminari
