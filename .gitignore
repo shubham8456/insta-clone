@@ -58,15 +58,8 @@ Temporary Items
 !/instagram/tmp/storage/
 !/instagram/tmp/storage/.keep
 
-# Ignore local uploads
-/instagram/public/uploads/*
-!/instagram/public/uploads/
-
 # Ignore master key for decrypting credentials and more.
 /instagram/config/master.key
-
-# Ignore application configuration
-/instagram/config/application.yml
 
 *.rbc
 capybara-*.html
@@ -132,6 +125,13 @@ capybara-*.html
 /instagram/yarn-debug.log*
 /instagram/.yarn-integrity
 
+# Ignore local uploads
+/instagram/public/uploads/*
+/instagram/public/uploads/.keep
+
 # Ignore uploaded files in development
 /instagram/storage/*
 !/instagram/storage/.keep
+
+# Ignore application configuration which might have important credentials
+/instagram/config/application.yml

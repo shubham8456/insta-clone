@@ -60,13 +60,10 @@ Temporary Items
 
 # Ignore local uploads
 /public/uploads/*
-!public/uploads/
+!public/uploads/.keep
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-
-# Ignore application configuration
-/config/application.yml
 
 *.rbc
 capybara-*.html
@@ -136,3 +133,5 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 
+# Ignore application configuration which might have important credentials
+/config/application.yml
