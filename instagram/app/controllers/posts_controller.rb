@@ -12,9 +12,9 @@ class PostsController < ApplicationController
         @post.user = current_user
 
         if @post.save
-            redirect_to homepage_path
+            redirect_to homepage_path, notice: "Post created Successfully"
         else
-            redirect_to new_post_path
+            redirect_to new_post_path, notice: "Post couldn't be saved"
         end
 
     end
@@ -31,7 +31,9 @@ class PostsController < ApplicationController
 
     def destroy
         if @post.user == current_user
-            @post.destroy
+            if @post.destroy
+                redirect_to profile_path(current_user.user_name)
+            end
         end
     end
 

@@ -19,14 +19,14 @@ Rails.application.routes.draw do
     resources :follows, only: [:create, :destroy]
   end
 
+  delete 'posts/:id', to: 'posts#destroy', as: 'destroy_post'
+
+  get 'show/:user_name', to: 'posts#show', as: 'profile'
+
+  get 'show/:user_name/followings', to: 'follows#show', as: 'user_followings'
+
   # homepage for signed in users
-  get 'homepage' => 'public#homepage'
-
-  get 'posts/:id', to: 'posts#destroy', as: 'destroy_post'
-
-  get 'show/:user_name' => 'posts#show', as: 'profile'
-
-  get 'show/:user_name/followings' => 'follows#show', as: 'user-followings'
+  get 'homepage', to: 'public#homepage'
 
   # Defines the root path route ("/")
   devise_scope :user do

@@ -7,7 +7,7 @@
 .followings-page-data-display-container {
     display: grid;
     height: 80vh;
-    width: 60vw;
+    width: 75vw;
     grid-template-columns: 1fr 1fr;
     margin: 2%;
     justify-items: center;
@@ -19,8 +19,12 @@
 }
 
 .display-box {
-    width: 28vw;
+    width: 30vw;
     background-color: white;
     border: 1px solid #e6e6e6;
-    padding: 10% 4%;
+    padding: 10% 10%;
+}
+
+.followings-page-usernames {
+    all: unset;
 }

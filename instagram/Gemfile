@@ -25,6 +25,9 @@ gem 'mini_magick', '~> 4.11'
 # devise for authentication stuff
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
+# Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 

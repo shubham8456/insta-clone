@@ -5,9 +5,9 @@
   <div class="posts-container">
     <% @posts.each do |p| %>
 
-        <% if p.user.followers.include? current_user %>
+        <%# if p.user.followers.include? current_user %>
         <%# or we can also use this %>
-        <%# if current_user.followings.include? p.user %>
+        <% if current_user.followings.include?(p.user) || current_user == p.user %>
         
         <article>
 
@@ -17,7 +17,7 @@
                     <% if p.user.profile_image.url %>
                         <%= image_tag p.user.profile_image.url, height:35, class:"my-img" %>
                     <% else %>
-                        <%= link_to image_tag('default_profile_photo.png', height: 35, class:"my-img") %>
+                        <%= image_tag('default_profile_photo.png', height: 35, class:"my-img") %>
                     <% end %>
                     
                 <div class="post-card-header-text">
@@ -30,9 +30,14 @@
 
             </div>
             
-            <%# the post photo itself %>
-            <%= image_tag p.media.url, class:"post-card-image"  %>
-
+            <%# the post media itself %>
+            <% media_extension_name = p.media.url.to_s.downcase.split('.')[-1] %>
+            <% if %w(jpg jpeg gif png).include? media_extension_name %>
+                <%= image_tag p.media.url, class:"post-card-media"  %>
+            <% elsif %w(mkv mp4 mov avi).include? media_extension_name %>
+                <%= video_tag url_for(p.media.url), class:"post-card-media", controls: true %>
+            <% end %>
+            
 
             <% is_liked = p.likes.find { |like| like.user_id == current_user.id} %>
             
@@ -53,6 +58,7 @@
 
             <span class="post-card-time-duration"><%= "#{(time_ago_in_words p.created_at).to_s.upcase} AGO" %></span>
 
+            <%# redering comment partial to display comments for the post %>
             <%= render "posts/comments", post: p %>
 
             <span class="post-card-dividing-line"></span>
@@ -60,7 +66,7 @@
             <div class="post-card-comment">
                 <%= form_for @comment do |f| %>
                     <%= f.hidden_field :post_id, value: p.id %>
-                    <%= f.text_field :comment_text, class:"post-card-comment-box", placeholder:"Add a comment..." %>
+                    <%= f.text_field :comment_text, class: "post-card-comment-box", placeholder: "Add a comment..." %>
                     <%= f.submit "Post", class:"post-button" %>
                 <% end %>
             </div>
@@ -70,6 +76,7 @@
         <% end %>
 
     <% end %>
+    <div class="paginator-navbar"> <%= paginate @posts, outer_window: 2 %> </div>
   </div>
 
   <div class="sidebar-container">
@@ -81,7 +88,7 @@
                 <% if current_user.profile_image.url %>
                     <%= image_tag current_user.profile_image.url, height:50, class:"my-img" %>
                 <% else %>
-                    <%= link_to image_tag('default_profile_photo.png', height: 50, class:"my-img") %>
+                    <%= image_tag('default_profile_photo.png', class:"default-profile-image" , height: 50, class:"my-img") %>
                 <% end %>
                 <div class="sidebar-logged-user-username-fullname">
                     <p class="sidebar-logged-user-username">

@@ -66,6 +66,10 @@ body{
   justify-self: left;
 }
 
+.home-navicon {
+  color: grey;
+}
+
 .my-img {
   border-radius: 50%;
   border: 1px solid #e6e6e6;

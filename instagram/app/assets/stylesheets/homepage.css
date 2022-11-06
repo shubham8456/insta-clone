@@ -121,6 +121,14 @@ article {
     padding: 1% 2%;
 }
 
+.paginator-navbar {
+    display: flex;
+    place-content: center;
+    background-color: white;
+    border: 1px solid #e6e6e6;
+    padding: 1em;
+}
+
 .sidebar-container {
     width: 95%;
     display: flex;
@@ -137,6 +145,17 @@ article {
 
 .sidebar-logged-in-user {
     display: flex;
+}
+
+.post-card-media {
+    width: 100%;
+    object-fit: contain;
+    margin: 2% 0;
+    justify-self: center;
+}
+
+.default-profile-image {
+    background-color: white;
 }
 
 .sidebar-logged-user-username-fullname {

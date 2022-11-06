@@ -5,11 +5,8 @@ class CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
         @comment.user_id = current_user.id if user_signed_in?
 
-        if @comment.save
-            redirect_to homepage_path
-        else
-            redirect_to homepage_path
-        end
+        @comment.save
+        redirect_to homepage_path
     end
 
     def destroy

@@ -2,7 +2,8 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
 
     include CarrierWave::MiniMagick
 
-    storage :aws
+    storage :file
+    #storage :aws
   
     # Override the directory where uploaded files will be stored.
     def store_dir
@@ -24,7 +25,7 @@ class ProfileImageUploader < CarrierWave::Uploader::Base
     # end
   
     def extension_allowlist
-      %w(jpg jpeg png)
+      %w(jpg jpeg png JPG JPEG PNG)
     end
   
   end

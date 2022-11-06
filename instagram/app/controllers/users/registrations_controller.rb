@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  # after_action :set_profile_pic, only[:create]
 
   # GET /resource/sign_up
   # def new
@@ -54,6 +55,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
     homepage_path
   end
+
+  # def set_profile_pic
+  #   if !current_user.profile_image.url
+  #     i = ProfileImageUploader.new
+  #     i.store!('https://insta-user-uploads.s3.ap-south-1.amazonaws.com/uploads/default_profile_photo.png')
+  #     current_user.profile_image = i
+  #     current_user.profile_image.save!
+  #   end
+  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

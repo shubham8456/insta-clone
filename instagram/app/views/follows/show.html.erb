@@ -23,8 +23,8 @@
 
             <% followed_users_list.each do |followed_user| %>
 
-                <span><%= followed_user_count %>. </span>
-                <span><%= link_to followed_user, profile_path(followed_user) %></span>
+                <span><%= followed_user_count %>.</span>
+                <span class="followings-page-usernames"><%= link_to followed_user, profile_path(followed_user) %></span>
 
                 <% followed_user_count += 1 %>
                 <br />
@@ -38,8 +38,8 @@
 
             <% followers_list.each do |follower| %>
 
-                <span><%= follower_count %>. </span>
-                <span><%= link_to follower, profile_path(follower) %></span>
+                <span><%= follower_count %>.</span>
+                <span class="followings-page-usernames"><%= link_to follower, profile_path(follower) %></span>
 
                 <% follower_count += 1 %>
                 <br />

@@ -4,7 +4,7 @@
     <% if @user.profile_image.url %>
         <%= image_tag @user.profile_image.url, class:"profile-image" %>
     <% else %>
-        <%= image_tag 'default_profile_photo.png', class:"profile-image" %>
+        <%= image_tag 'default_profile_photo.png', class:"profile-image default-profile-image" %>
     <% end %>
 
     <div class="profile-details">
@@ -55,14 +55,19 @@
         <% if p.user == @user %>
             <article>
 
-                <%= image_tag p.media.url, class:"post-card-image" %>
+                <% media_extension_name = p.media.url.to_s.downcase.split('.')[-1] %>
+                <% if %w(jpg jpeg gif png).include? media_extension_name %>
+                    <%= image_tag p.media.url, class:"post-card-media"  %>
+                <% elsif %w(mkv mp4 mov avi).include? media_extension_name %>
+                    <%= video_tag url_for(p.media.url), class:"post-card-media", controls: true %>
+                <% end %>
 
                 <span class="post-card-header-location">
-                            <%= p.location %>
+                    <%= p.location %>
                 </span>
 
                 <% if p.user == current_user %>
-                    <%= link_to "Delete Post", destroy_post_path(p), data: {turbo_method: :delete}, class:"comment-delete post-delete" %>
+                    <%= link_to "Delete Post", destroy_post_path(p), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class:"comment-delete post-delete" %>
                 <% end %>
 
                 <div>
